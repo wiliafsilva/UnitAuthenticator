@@ -45,17 +45,30 @@ public class Main {
 
         scanner.close();
     }
-    
-    private static void inserirAluno(Scanner scanner){
+
+    //Nova autenticação ao adicionar aluno
+    private static void inserirAluno(Scanner scanner) {
         System.out.print("Digite o nome do usuário: ");
-        String userName = scanner.nextLine();
+        String userName = scanner.nextLine().trim(); // Remove espaços em branco
+
+        if (userName.isEmpty()) {
+            System.out.println("Erro: O nome de usuário não pode ser vazio.");
+            return;
+        }
+
         System.out.print("Digite a senha: ");
-        String password = scanner.nextLine();
+        String password = scanner.nextLine().trim(); // Remove espaços em branco
+
+        if (password.isEmpty()) {
+            System.out.println("Erro: A senha não pode ser vazia.");
+            return;
+        }
 
         Aluno aluno = new Aluno(userName, password);
         tH.insert(aluno);
         System.out.println("Aluno adicionado! \n");
     }
+
 
     private static void removerAluno(Scanner scanner){
         System.out.println("Digite o nome do aluno que tu quer remover:");

@@ -15,15 +15,26 @@ public class TabelaHash {
             tabela[i] = new LinkedList<>();
         }
     }
-    private int hash(String chave){
+    //Usar um hash polinomial para evitar colisões
+    private int hash(String chave) {
         int hash = 0;
         for (int i = 0; i < chave.length(); i++) {
-            hash += chave.charAt(i);
+            hash = (31 * hash + chave.charAt(i)) % tamanhoTabela; // 31 é um número primo comum
         }
-        return (hash%tamanhoTabela);
+        return hash;
     }
+    // Ao criar Usuário e senha agora gera alerta que impede valores vázios
+    public void insert(Aluno aluno) {
+        if (aluno.getUserName() == null || aluno.getUserName().trim().isEmpty()) {
+            System.out.println("Erro: O nome de usuário não pode ser vazio.");
+            return;
+        }
 
-    public void insert(Aluno aluno){
+        if (aluno.getPassword() == null || aluno.getPassword().trim().isEmpty()) {
+            System.out.println("Erro: A senha não pode ser vazia.");
+            return;
+        }
+
         int index = hash(aluno.getUserName());
         for (Aluno a : tabela[index]) {
             if (a.getUserName().equals(aluno.getUserName())) {
@@ -31,16 +42,18 @@ public class TabelaHash {
                 return;
             }
         }
+
         tabela[index].add(aluno);
-        System.out.println("Aluno adicionado com sucesso!! Obrigado por usaro Unit Authenticator");
+        System.out.println("Aluno adicionado com sucesso! Obrigado por usar o Unit Authenticator.");
     }
 
+    // Modificado para mostrar o nome do aluno removido
     public void remove(String userName){
         int index = hash(userName);
         for (Aluno a : tabela[index]) {
             if (a.getUserName().equals(userName)) {
                 tabela[index].remove(a);
-                System.out.println("Aluno removido com sucesso!");
+                System.out.println("Aluno " + userName + " removido com sucesso!");
                 return;
             }
         }
@@ -59,11 +72,12 @@ public class TabelaHash {
     }
 
     // EU QUASE ESQUECI DE FAZER ESTE MÉTHODO RSRSRSRS
+    // modificado para exiber o nome do aluno encontrado
     public boolean existe(String userName){
         int index = hash(userName);
         for (Aluno a : tabela[index]) {
             if (a.getUserName().equals(userName)) {
-                System.out.println("Aluno existe");
+                System.out.println("Aluno " + userName + " existe");
                 return true;
             }
         }
