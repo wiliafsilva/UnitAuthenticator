@@ -12,10 +12,10 @@ public class Main {
 
         do {
             System.out.println("===== MENU DO SISTEMA =====");
-            System.out.println("1. Inserção de Usuário");
-            System.out.println("2. Remoção de Usuário");
-            System.out.println("3. Busca de Usuário");
-            System.out.println("4. Login");
+            System.out.println("1. Inserir Usuário");
+            System.out.println("2. Buscar Usuário");
+            System.out.println("3. Login");
+            System.out.println("4. Remover Usuário");
             System.out.println("5. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
@@ -26,13 +26,13 @@ public class Main {
                     inserirAluno(scanner);
                     break;
                 case 2:
-                    removerAluno(scanner);
-                    break;
-                case 3:
                     buscarAluno(scanner);
                     break;
-                case 4:
+                case 3:
                     loginTeste(scanner);
+                    break;
+                case 4:
+                    removerAluno(scanner);
                     break;
                 case 5:
                     System.out.println("Saindo do sistema...");
@@ -71,14 +71,14 @@ public class Main {
 
 
     private static void removerAluno(Scanner scanner){
-        System.out.println("Digite o nome do aluno que tu quer remover:");
+        System.out.println("Digite o nome do aluno que gostaria remover:");
         String userName = scanner.nextLine();
         tH.remove(userName);
 
     }
 
     private static void buscarAluno(Scanner scanner){
-        System.out.println("Digite o nome do aluno que deseja buscar: ");
+        System.out.println("Digite o nome do aluno que gostaria buscar: ");
         String userName = scanner.nextLine();
 
         if (tH.existe(userName)){
