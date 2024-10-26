@@ -44,7 +44,7 @@ public class TabelaHash {
         }
 
         tabela[index].add(aluno);
-        System.out.println("Aluno adicionado com sucesso! Obrigado por usar o Unit Authenticator.");
+        System.out.println("Aluno adicionado com sucesso! Obrigado por usar o Unit Authenticator.\n");
     }
 
     // Modificado para mostrar o nome do aluno removido
@@ -53,11 +53,11 @@ public class TabelaHash {
         for (Aluno a : tabela[index]) {
             if (a.getUserName().equals(userName)) {
                 tabela[index].remove(a);
-                System.out.println("Aluno " + userName + " removido com sucesso!");
+                System.out.println("Aluno " + userName + " removido com sucesso!\n");
                 return;
             }
         }
-        System.out.println("Aluno não encontrado na nossa tabela.");
+        System.out.println("Aluno não encontrado na nossa tabela.\n");
     }
 
     public boolean autenticar(String userName, String password){
@@ -77,7 +77,7 @@ public class TabelaHash {
         int index = hash(userName);
         for (Aluno a : tabela[index]) {
             if (a.getUserName().equals(userName)) {
-                System.out.println("Aluno " + userName + " existe");
+                System.out.println("Aluno " + userName + " existe \n");
                 return true;
             }
         }

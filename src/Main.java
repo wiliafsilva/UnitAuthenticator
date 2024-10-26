@@ -66,7 +66,7 @@ public class Main {
 
         Aluno aluno = new Aluno(userName, password);
         tH.insert(aluno);
-        System.out.println("Aluno adicionado! \n");
+
     }
 
 
@@ -74,15 +74,14 @@ public class Main {
         System.out.println("Digite o nome do aluno que tu quer remover:");
         String userName = scanner.nextLine();
         tH.remove(userName);
-        System.out.println("Aluno removido\n");
+
     }
 
     private static void buscarAluno(Scanner scanner){
-        System.out.println("Digite o nome do aluno que tu quer buscar: ");
+        System.out.println("Digite o nome do aluno que deseja buscar: ");
         String userName = scanner.nextLine();
 
         if (tH.existe(userName)){
-            System.out.println("Aluno encontrado\n");
         }
         else{
             System.out.println("Aluno não encontrado\n");
@@ -96,7 +95,6 @@ public class Main {
         String password = scanner.nextLine();
 
         if (tH.autenticar(userName, password)){
-            System.out.println("Login feito, bem vindo!\n");
         }
         else{
             System.out.println("Usuário/Senha incorreto.\n");
